@@ -183,7 +183,8 @@ Replace `<RPI_IP>` with the IP address of your Raspberry Pi.
 
 ## 📂 Project Files
 
-* `Upper_sensors.ino` – Arduino logic for sensor-based detection and motor control
+* `Upper_sensors.ino` – Arduino logic for only sensor-based detection 
+* `4x293D.ino` – Arduino logic for sensor-based detection and motor control
 * `start_stream.sh` – Raspberry Pi script for video streaming
 * `README.md` – Full documentation and setup instructions (this file)
 
