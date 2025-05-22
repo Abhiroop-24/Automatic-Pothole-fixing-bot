@@ -77,6 +77,8 @@ stopMoving();   // All motors stopped
 dumpSand();     // Activates servo to dump sand
 
 ```
+![out](https://github.com/user-attachments/assets/cef1cfe4-674b-4859-beeb-61c20e792599)
+
 
 ## 📺 Raspberry Pi Live Stream Setup (Step-by-step)
 
