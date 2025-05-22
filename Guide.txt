@@ -1,0 +1,82 @@
+
+## 🛠️ Working Guide
+
+This section explains how the autonomous pothole-fixing robot functions step by step, combining **sensor logic**, **motor control**, and **live video streaming**.
+
+---
+
+### 🧠 1. Power ON and Initialization
+
+* Power on the **Arduino-based robot** and the **Raspberry Pi 3 B+**.
+* Raspberry Pi boots and starts **live video streaming** automatically (if autostart is enabled).
+* Arduino initializes all sensors and motors.
+
+---
+
+### 🔍 2. Pothole Detection
+
+* The **ultrasonic sensor**, placed at the front center, continuously measures surface height.
+* If a significant drop in height is detected (indicating a pothole), the robot triggers alignment mode.
+
+---
+
+### 🎯 3. Alignment Using IR Sensors
+
+* The robot uses **four IR sensors**:
+
+  * `IR_LEFT`, `IR_CENTER_LEFT`, `IR_CENTER_RIGHT`, `IR_RIGHT`
+* These sensors help align the robot such that the pothole lies precisely under the **servo-controlled sand gate**.
+* IR readings determine if the robot should:
+
+  * **Turn Left** (if more detection on right sensors)
+  * **Turn Right** (if more detection on left sensors)
+  * **Move Forward** (when centered)
+
+---
+
+### 🤖 4. Movement Control
+
+* Controlled using **4 DC motors**:
+
+  * `M1` (Left Rear), `M2` (Left Front)
+  * `M3` (Right Front), `M4` (Right Rear)
+* Motor control is handled using an **L293D Motor Driver Shield**, with movement functions coded in Arduino:
+
+  * `moveForward()`, `moveBackward()`
+  * `turnLeft()`, `turnRight()`
+  * `stopMoving()`
+
+---
+
+### 🪣 5. Sand Dumping (Pothole Fix)
+
+* Once aligned and directly above the pothole, the robot:
+
+  1. Stops all motors.
+  2. Activates the **servo motor** connected to a sand gate.
+  3. The servo rotates to release sand into the pothole.
+  4. After a few seconds, it closes the gate.
+
+---
+
+### 🎥 6. Live Video Streaming (via Raspberry Pi)
+
+* The **Raspberry Pi Camera** captures real-time footage of the process.
+* Streaming starts with the `start_stream.sh` script.
+* Video is broadcasted over UDP at port `8080` using `ffmpeg`.
+* View the stream using VLC:
+
+  ```
+  Media → Open Network Stream → udp://<RPI_IP>:8080
+  ```
+
+---
+
+### 🔁 7. Looping Operation
+
+* After dumping sand, the robot resumes scanning the road for the next pothole.
+* This loop continues until the robot is manually stopped or powered off.
+
+---
+
+
