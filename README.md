@@ -129,6 +129,9 @@ ffmpeg -i - \
   udp://0.0.0.0:$PORT?pkt_size=1316
 ```
 
+![pi2](https://github.com/user-attachments/assets/a973400c-e32f-452d-be50-4e66afa8a7d3)
+
+
 Make the script executable:
 
 ```bash
@@ -147,6 +150,7 @@ Run the stream manually:
 ./start_stream.sh
 ```
 
+
 #### Option B: Autostart on Boot (Optional)
 
 Add to crontab to auto-run on every boot:
@@ -160,6 +164,8 @@ Add the following line at the end:
 ```bash
 @reboot /home/pi/start_stream.sh
 ```
+
+![pi1](https://github.com/user-attachments/assets/146513e1-f2c6-4a95-8e32-0b7fc656e3e8)
 
 ---
 
